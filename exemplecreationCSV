@@ -1,0 +1,4 @@
+CSVWriter writer = new CSVWriter(new FileWriter("yourfile.csv"), '\t');    
+String[] entries = "first#second#third".split("#");
+writer.writeNext(entries);
+writer.close();
