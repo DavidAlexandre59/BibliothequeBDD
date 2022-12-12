@@ -1,0 +1,14 @@
+Étant donné : Given
+Quand : When
+Alors : Then
+Et : And
+
+Par exemple, pour un scénario d’authentification, vous devez écrire :
+
+Étant donné que je visite "/login"
+  Quand j'entre "Abdou" dans le champ "nom d'utilisateur"
+    Et j'entre "testeur" dans le champ "mot de passe"
+    Et j'appuie sur le bouton "connexion"
+  Alors, je devrais voir la page "Accueil"
+  
+  
