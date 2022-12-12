@@ -1,0 +1,54 @@
+package formation.exercice;
+ import java.sql.*;
+    
+ public class JDBCDemo {
+
+    public static void main(String[] args) {
+       try{
+          if(args.length==2){
+            String user = args[0];
+            String password = args[1];
+            //Déclaration du driver : 
+            Class.forName("com.ibm.as400.access.AS400JDBCDriver");
+            //Url de connexion 
+            String dbUrl = "jdbc:as400://AS400/BDVIN1"
+            //Connexion à la BDD
+            Connexion dbCon = DriverManager.getConnection(dbUrl,user,password);
+            
+            //String requête SQL : 
+            String strSql = "Select * from pays";
+            //Création d'une requête
+            Statement stmt = dbCon.CreateStatement();
+            //Exécution de la requête
+            ResultSet rs = stmt.executeQuery(strSql);
+            while(rs.next()){
+              //Récupération de la valeur de la colonne 1 de l'enregistrement
+              String col1 = rs.getString(1);
+              //Récupération de la valeur de la colonne 1 de l'enregistrement
+              String col2 = rs.getString(2);
+              //Récupération de la valeur de la colonne 1 de l'enregistrement
+              String col3 = rs.getString(3);
+              //Affichage du résultat
+              StringBuffer strb = new StringBuffer();
+              strb.append("Enregistrement n°");
+              strb.append(i+1);
+              strb.append(" : ");
+              strb.append(col1);
+              strb.append(" , ");
+              strb.append(col2);
+              strb.append(" , ");
+              strb.append(col3);
+              System.out.println(strb.toString());
+              
+            }
+            rs.close();
+            stmt.close();
+            dbCon.close();
+          }else{
+            System.out.println("Paramètres insuffisants");
+          }
+       }catch(Exception e){
+         System.out.println(e.getMessage());
+       }
+    } 
+}
